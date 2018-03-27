@@ -8,6 +8,8 @@ An attempt at observing how stocks on SGX can be grouped based on their movement
 
 2. Observing how stocks move together is important in managing portfolios and risks. Investing only in a certain industry can heavily expose an investor to industry-related risks, such as low prices for energy stocks. Diversification is the most basic and effective way for investors to manage risk and reduce the volatility of an asset's price movements. 
 
+3. I cleared my work in school and had an entire free day to do something.
+
 The aim of this project is to 1) test those intuitions with some historical data to explore if that is the case for the last quarter and 2) find those baskets of stocks.
 
 ### Collecting the data
