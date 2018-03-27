@@ -96,10 +96,10 @@ clus <- kmeans(cor_matrix, centers=9)
 par(cex=0.9, family="sans")
 plotcluster(cor_matrix, clus$cluster)
 ```
-
 ![Image]('ss/kmeans_output.jpg')
 
-I started with 11 clusters which were the number of industries in our data and decreased it to 9 to reduce visible overlaps in the plot.
+The plot shows 9 clusters plotted against the 2 largest Principal Components which explains about 80% of the variability.
+I started with 11 clusters which were the number of industries in our data and decreased it to 9 to reduce visible overlaps in the plot. 
 Using the Within-cluster Sum of Square (WSS) and Gap Stat methods, the suggested number of clusters to use is 3 but it will not be much of a use for our interpretation later on.
 
 ```markdown
@@ -108,4 +108,37 @@ fviz_nbclust(cor_matrix, kmeans, nstart = 25,  method = "gap_stat", nboot = 10) 
 ```
 
 ### Visualizations on Tableau
+Visit the link below for live demo:
 https://public.tableau.com/shared/W86WJG32N?:display_count=yes
+
+I plotted boxplots of the %change in price from the start to the end of a quarter for each cluster. There seems to be clusters which are performing much better than the rest.
+
+![Image]('ss/boxplots.jpg')
+
+Below are the distributions of industries for each cluster and quite surprisingly they seem to be very evenly spread out. This implies that the stocks of the same industry may not necessarily move together more than a mixed basket of stocks.
+
+![Image]('ss/dist1.jpg')
+![Image]('ss/dist2.jpg')
+![Image]('ss/dist3.jpg')
+
+The list of stocks in the 9 clusters are in the SGX_Stock_By_Cluster.csv file which looks like this. The dataset could help to gain insights about how some of the stocks you are interested is clustered.
+![Image]('ss/excelclusters.jpg')
+
+### Hierarchical Clustering
+
+This is another popular clustering method which builds clusters incrementally. The further apart stocks are across the branches, the more dissimilar they are in terms of how they move. This could be very useful if you would like to diversify your portfolio in terms of stock movements over the last quarter.
+
+<embed src="https://jasonyip184.github.io/clustering_sgx_stocks/ss/HClust.pdf" type="application/pdf" />
+
+For example, BUKIT SEMBAWANG ESTATES LTD (top) is the furthest from HI−P INTERNATIONAL LIMITED (bottom) and are most different.
+
+### Future
+Many more improvements can be made to improve the quality of analyses.
+
+1. Using a longer timeframe for prices - I shortened it to simplify the data handling.
+2. Scraping and using other key features such as Volume, Market Cap, Beta, PE ratio, EPS and financial ratios for clustering
+3. Exploring more methods of clustering
+4. Include other financial instruments such as bonds, currencies, commodities and derivatives.
+
+Please share your comments or suggestions if you have any! jasonyip184@gmail.com
+
