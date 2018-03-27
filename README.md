@@ -98,7 +98,7 @@ clus <- kmeans(cor_matrix, centers=9)
 par(cex=0.9, family="sans")
 plotcluster(cor_matrix, clus$cluster)
 ```
-![picture](ss/kmeans_output.jpg)
+![picture](ss/kmeans_output.jpeg)
 
 The plot shows 9 clusters plotted against the 2 largest Principal Components which explains about 80% of the variability.
 I started with 11 clusters which were the number of industries in our data and decreased it to 9 to reduce visible overlaps in the plot. 
@@ -128,9 +128,9 @@ The list of stocks in the 9 clusters are in the SGX_Stock_By_Cluster.csv file wh
 
 ### Hierarchical Clustering
 
-This is another popular clustering method which builds clusters incrementally. The further apart stocks are across the branches, the more dissimilar they are in terms of how they move. This could be very useful if you would like to diversify your portfolio in terms of stock movements over the last quarter.
+This is another popular clustering method which builds clusters incrementally. The further apart stocks are across the branches, the more dissimilar they are in terms of how they move. This could be very useful if you would like to diversify your portfolio in terms of stock movements over the last quarter. Feel free to Ctrl+F on the stock.
 
-<embed src="https://jasonyip184.github.io/clustering_sgx_stocks/ss/HClust.pdf" type="application/pdf" />
+<embed src="https://github.com/jasonyip184/Clustering_SGX_Stocks/blob/master/ss/HClust.pdf" type="application/pdf" />
 
 For example, BUKIT SEMBAWANG ESTATES LTD (top) is the furthest from HI−P INTERNATIONAL LIMITED (bottom) and are most different.
 
