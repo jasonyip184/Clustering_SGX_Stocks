@@ -62,7 +62,7 @@ df_of_stocks = df_of_stocks[vapply(df_of_stocks, function(x) length(unique(x)) >
 ```
 df_of_stocks should look like
 
-![picture]('ss/ss1.jpg')
+![picture](ss/ss1.jpg)
 
 ### Using the Pearson correlation coefficient
 _The correlation coefficient is used to measure both the degree and direction of the correlation between any two stocks. It can be anywhere between -1 and 1. It is used to select stocks in different industries that tend to move in tandem, or to hedge your bets by selecting stocks with a negative coefficient so that if one stock fails, the other is likely to get a boost. When stocks have a correlation coefficient of 0, it does not mean they never behave in the same way; rather, it means that they are as likely to move differently as they are to move together, making them unpredictable. However, this also means there is less likelihood that many noncorrelated stocks will fail simultaneously._
@@ -74,7 +74,7 @@ I calculated the 610x610 correlation matrix which compares the prices of every s
 ```markdown
 cor_matrix = cor(df_of_stocks)
 ```
-![picture]('ss/ss2.jpg')
+![picture](ss/ss2.jpg)
 
 I also calculated the %change from the start to the end of the quarter for each stock (to be used later)
 
@@ -88,7 +88,7 @@ for(i in 1:ncol(df_of_stocks)) {
 ### K-Means Clustering
 K-Means is one of the most popular unsupervised machine learning methods for clustering. We plan to cluster the stocks based on how close they are in terms of their respective correlations. For example, if SPH and Starhub are in the same cluster while DBS is in another cluster, then the 609 correlations between SPH and every other stock would be closer to Starhub's than DBS'. 
 
-![picture]('ss/kmeans.jpg')
+![picture](ss/kmeans.jpg)
 from https://brilliant.org/wiki/k-means-clustering/
 
 K-Means is fast (time complexity O(n)) and it's also easy to execute.
@@ -98,7 +98,7 @@ clus <- kmeans(cor_matrix, centers=9)
 par(cex=0.9, family="sans")
 plotcluster(cor_matrix, clus$cluster)
 ```
-![picture]('ss/kmeans_output.jpg')
+![picture](ss/kmeans_output.jpg)
 
 The plot shows 9 clusters plotted against the 2 largest Principal Components which explains about 80% of the variability.
 I started with 11 clusters which were the number of industries in our data and decreased it to 9 to reduce visible overlaps in the plot. 
@@ -115,16 +115,16 @@ https://public.tableau.com/shared/W86WJG32N?:display_count=yes
 
 I plotted boxplots of the %change in price from the start to the end of a quarter for each cluster. There seems to be clusters which are performing much better than the rest.
 
-![picture]('ss/boxplots.jpg')
+![picture](ss/boxplots.jpg)
 
 Below are the distributions of industries for each cluster and quite surprisingly they seem to be very evenly spread out. This implies that the stocks of the same industry may not necessarily move together more than a mixed basket of stocks.
 
-![picture]('ss/dist1.jpg')
-![picture]('ss/dist2.jpg')
-![picture]('ss/dist3.jpg')
+![picture](ss/dist1.jpg)
+![picture](ss/dist2.jpg)
+![picture](ss/dist3.jpg)
 
 The list of stocks in the 9 clusters are in the SGX_Stock_By_Cluster.csv file which looks like this. The dataset could help to gain insights about how some of the stocks you are interested is clustered.
-![picture]('ss/excelclusters.jpg')
+![picture](ss/excelclusters.jpg)
 
 ### Hierarchical Clustering
 
